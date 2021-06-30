@@ -51,11 +51,37 @@ html{
 .board-vertical-line {
     width: 4px;
     height: 250px;
+    animation: verticalAnim 1s ease-out;
 }
 .board-horizontal-line {
     width: 250px;
     height: 4px;
     margin: auto;
+    animation: horizontalAnim 1s ease-out;
+}
+@keyframes horizontalAnim { 
+    from { 
+        margin-left: 125px;
+        margin-right: 125px;
+        width: 0px;
+    }
+    100% {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 250px;
+    }
+}
+@keyframes verticalAnim { 
+    from { 
+        margin-top: 125px;
+        margin-bottom: 125px;
+        height: 0px;
+    }
+    100% {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 250px;
+    }
 }
 #vertical-1 {
     left: 80.666666px;
@@ -87,12 +113,38 @@ html{
 }
 .mini-board-vertical-line {
     width: 1px;
-    height: 80.666667px;
+    height: 0px;
+    animation: mini-verticalAnim 1s 1.2s ease-out forwards;
 }
 .mini-board-horizontal-line {
-    width: 80.666667px;
+    width: 0px;
     height: 1px;
     margin: auto;
+    animation: mini-horizontalAnim 1s 1.2s ease-out forwards;
+}
+@keyframes mini-horizontalAnim { 
+    from { 
+        margin-left: 40.3333px;
+        margin-right: 40.3333px;
+        width: 0px;
+    }
+    100% {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 80.6666px;
+    }
+}
+@keyframes mini-verticalAnim { 
+    from { 
+        margin-top: 40.3333px;
+        margin-bottom: 40.3333px;
+        height: 0px;
+    }
+    100% {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 80.6666px;
+    }
 }
 #mini-vertical-1 {
     left: 25.55555px;
