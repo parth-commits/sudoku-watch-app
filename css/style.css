@@ -1,0 +1,28 @@
+
+html{
+    scroll-behavior: smooth;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+#temp-link {
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    top: 60px;
+    font-size: 20px;
+}
+
+#landing-page {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: #14bdac;
+    overflow: hidden;
+}

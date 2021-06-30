@@ -1,0 +1,145 @@
+html{
+    scroll-behavior: smooth;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#landing-page {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: #14bdac;
+    overflow: hidden;
+}
+#game-box {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    margin: auto;
+    top: 55px;
+    background-color: transparent;
+    /*border-width: 1px;
+    border-style: solid;
+    border-color: #0da192;*/
+}
+#game-border {
+    background-color: transparent;
+    width: 253px;
+    height: 253px;
+    /*transform: translate(-50%, -50%);*/
+    position: absolute;
+    border-width: 2px;
+    margin: auto;
+    top: 54px;
+    left: 54px;
+    /*top: 50%;
+    left: 50%;*/
+    border-style: solid;
+    border-color: #0da192;
+}
+.line {
+    top: 0px;
+    position: absolute;
+    background-color: #0da192;
+}
+.board-vertical-line {
+    width: 4px;
+    height: 250px;
+}
+.board-horizontal-line {
+    width: 250px;
+    height: 4px;
+    margin: auto;
+}
+#vertical-1 {
+    left: 80.666666px;
+}
+#vertical-2 {
+    left: 165.33333px;
+}
+#horizontal-1 {
+    top: 80.666666px;
+}
+#horizontal-2 {
+    top: 165.33333px;
+}
+
+
+
+
+
+.mini-box {
+    position: absolute;
+    width: 80.6666px;
+    height: 80.66666px;
+    background-color: transparent;
+}
+.mini-line {
+    top: 0px;
+    position: absolute;
+    background-color: #0da192;
+}
+.mini-board-vertical-line {
+    width: 1px;
+    height: 80.666667px;
+}
+.mini-board-horizontal-line {
+    width: 80.666667px;
+    height: 1px;
+    margin: auto;
+}
+#mini-vertical-1 {
+    left: 25.55555px;
+}
+#mini-vertical-2 {
+    left: 53.11111px;
+}
+#mini-horizontal-1 {
+    top: 25.555555px;
+}
+#mini-horizontal-2 {
+    top: 53.11111px;
+}
+
+#mini-box-1 {
+    top: 0px;
+    left: 0px;
+}
+#mini-box-2 {
+    top: 0px;
+    left: 84.66666px;
+}
+#mini-box-3 {
+    top: 0px;
+    left: 169.33333px;
+}
+#mini-box-4 {
+    top: 84.66666px;
+    left: 0px;
+}
+#mini-box-5 {
+    top: 84.66666px;
+    left: 84.66666px;
+}
+#mini-box-6 {
+    top: 84.66666px;
+    left: 169.33333px;
+}
+#mini-box-7 {
+    top: 169.33333px;
+    left: 0px;
+}
+#mini-box-8 {
+    top: 169.33333px;
+    left: 84.66666px;
+}
+#mini-box-9 {
+    top: 169.33333px;
+    left: 169.33333px;
+}
