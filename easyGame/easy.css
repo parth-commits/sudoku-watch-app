@@ -162,7 +162,6 @@ html{
 #mini-box-1 {
     top: 0px;
     left: 0px;
-    z-index: 5;
 }
 #mini-box-2 {
     top: 0px;
@@ -220,25 +219,228 @@ html{
         transform: scale(1);
         left: 0px;
         top: 0px;
+        z-index: initial;
     }
     100% {
         transform: scale(3.09917);
         left: 84.66667px;
         top: 84.66667px;
+        z-index: 5;
     }
 }
 
-/* increases box 1 size to fill page */
+/* decreases box 1 size to normal size */
 @keyframes box1DecreaseSize { 
     from { 
         transform: scale(3.09917);
         left: 84.66667px;
         top: 84.66667px;
+        z-index: 5;
     }
     100% {
         transform: scale(1);
         left: 0px;
         top: 0px;
+        z-index: initial;
+    }
+}
+
+/* increases box 2 size to fill page */
+@keyframes box2IncreaseSize { 
+    from { 
+        transform: scale(1);
+        top: 0px;
+        z-index: initial;
+    }
+    100% {
+        transform: scale(3.09917);
+        top: 84.66667px;
+        z-index: 5;
+    }
+}
+
+/* decreases box 2 size to normal size */
+@keyframes box2DecreaseSize { 
+    from { 
+        transform: scale(3.09917);
+        top: 84.66667px;
+        z-index: 5;
+    }
+    100% {
+        transform: scale(1);
+        top: 0px;
+        z-index: initial;
+    }
+}
+
+/* increases box 3 size to fill page */
+@keyframes box3IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(-84.666667px) translateY(84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 3 size to normal size */
+@keyframes box3DecreaseSize { 
+    from { 
+        transform: translateX(-84.666667px) translateY(84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+/* increases box 4 size to fill page */
+@keyframes box4IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 4 size to normal size */
+@keyframes box4DecreaseSize { 
+    from { 
+        transform: translateX(84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+/* increases box 5 size to fill page */
+@keyframes box5IncreaseSize { 
+    from { 
+        transform: scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 5 size to normal size */
+@keyframes box5DecreaseSize { 
+    from { 
+        transform: scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: scale(1);
+        z-index: initial;
+    }
+}
+
+/* increases box 6 size to fill page */
+@keyframes box6IncreaseSize { 
+    from { 
+        transform: translateX(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(-84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 6 size to normal size */
+@keyframes box6DecreaseSize { 
+    from { 
+        transform: translateX(-84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+
+/* increases box 7 size to fill page */
+@keyframes box7IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 7 size to normal size */
+@keyframes box7DecreaseSize { 
+    from { 
+        transform: translateX(84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+
+/* increases box 8 size to fill page */
+@keyframes box8IncreaseSize { 
+    from { 
+        transform: translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 8 size to normal size */
+@keyframes box8DecreaseSize { 
+    from { 
+        transform: translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+
+/* increases box 9 size to fill page */
+@keyframes box9IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(-84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 9 size to normal size */
+@keyframes box9DecreaseSize { 
+    from { 
+        transform: translateX(-84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
     }
 }
 

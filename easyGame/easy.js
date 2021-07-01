@@ -4,26 +4,58 @@ miniBox1.addEventListener('click', function (e, num = 0) {
     miniBoxMaximize(num);
   });
 const miniBox2 = document.getElementById('mini-box-2');
+miniBox2.addEventListener('click', function (e, num = 1) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 const miniBox3 = document.getElementById('mini-box-3');
+miniBox3.addEventListener('click', function (e, num = 2) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 const miniBox4 = document.getElementById('mini-box-4');
+miniBox4.addEventListener('click', function (e, num = 3) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 const miniBox5 = document.getElementById('mini-box-5');
+miniBox5.addEventListener('click', function (e, num = 4) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 const miniBox6 = document.getElementById('mini-box-6');
+miniBox6.addEventListener('click', function (e, num = 5) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 const miniBox7 = document.getElementById('mini-box-7');
+miniBox7.addEventListener('click', function (e, num = 6) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 const miniBox8 = document.getElementById('mini-box-8');
+miniBox8.addEventListener('click', function (e, num = 7) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 const miniBox9 = document.getElementById('mini-box-9');
+miniBox9.addEventListener('click', function (e, num = 8) {
+    e.stopPropagation();
+    miniBoxMaximize(num);
+  });
 
 const allBoxes = [miniBox1, miniBox2, miniBox3, miniBox4, miniBox5, miniBox6, miniBox7, miniBox8, miniBox9];
 const allLines = Array.prototype.slice.call(document.getElementsByClassName('line'));
 
-const minimizeVars = ['box1DecreaseSize'];
-const maximizeVars = ['box1IncreaseSize'];
+const minimizeVars = ['box1DecreaseSize', 'box2DecreaseSize', 'box3DecreaseSize', 'box4DecreaseSize', 'box5DecreaseSize', 'box6DecreaseSize', 'box7DecreaseSize', 'box8DecreaseSize', 'box9DecreaseSize'];
+const maximizeVars = ['box1IncreaseSize', 'box2IncreaseSize', 'box3IncreaseSize', 'box4IncreaseSize', 'box5IncreaseSize', 'box6IncreaseSize', 'box7IncreaseSize', 'box8IncreaseSize', 'box9IncreaseSize'];
 let isMaximizedBool = false;
 
 let miniBoxOnNumber;
 
 // Maximizes first box, and hides rest. 
 function miniBoxMaximize(num) {
-    miniBox1.style.animation = `${maximizeVars[num]} 0.3s ease-out forwards`;
+    allBoxes[num].style.animation = `${maximizeVars[num]} 0.3s ease-out forwards`;
     miniBoxOnNumber = num;
     isMaximizedBool = true;
     hideRest(allBoxes[num]);
