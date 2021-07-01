@@ -162,6 +162,7 @@ html{
 #mini-box-1 {
     top: 0px;
     left: 0px;
+    z-index: 5;
 }
 #mini-box-2 {
     top: 0px;
@@ -195,3 +196,49 @@ html{
     top: 169.33333px;
     left: 169.33333px;
 }
+/* Fades an element out */
+@keyframes opacityFadeOut { 
+    from { 
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* Fades an element in */
+@keyframes opacityFadeIn { 
+    from { 
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* increases box 1 size to fill page */
+@keyframes box1IncreaseSize { 
+    from { 
+        transform: scale(1);
+        left: 0px;
+        top: 0px;
+    }
+    100% {
+        transform: scale(3.09917);
+        left: 84.66667px;
+        top: 84.66667px;
+    }
+}
+
+/* increases box 1 size to fill page */
+@keyframes box1DecreaseSize { 
+    from { 
+        transform: scale(3.09917);
+        left: 84.66667px;
+        top: 84.66667px;
+    }
+    100% {
+        transform: scale(1);
+        left: 0px;
+        top: 0px;
+    }
+}
+
