@@ -53,6 +53,8 @@ let isMaximizedBool = false;
 
 let miniBoxOnNumber;
 
+const allTapBoxes = Array.prototype.slice.call(document.getElementsByClassName('tap-box'));
+
 // Maximizes first box, and hides rest. 
 function miniBoxMaximize(num) {
     allBoxes[num].style.animation = `${maximizeVars[num]} 0.3s ease-out forwards`;
@@ -91,5 +93,27 @@ async function unHideRest(miniBox) {
     }
     for (let i = 0; i < allLines.length; i++) {
         allLines[i].style.animation = 'opacityFadeIn 0.25s ease-out forwards';
+    }
+}
+
+async function clickedTapBox(boxNumber) {
+    if (isMaximizedBool) {  // This ensures that the tap-box number isnt increased by 1 unless the box is maximized
+        console.log(boxNumber);
+        let theNumber = allTapBoxes[boxNumber].innerHTML;
+        if (theNumber === '') {
+            allTapBoxes[boxNumber].innerHTML = 1;
+        } else {
+            theNumber = parseInt(theNumber);
+            if (theNumber === 9) {
+                theNumber = '';
+            } else {
+                theNumber = theNumber + 1;
+            }
+            allTapBoxes[boxNumber].style.animation = 'opacityFadeOut 0.1s ease-out forwards';
+            await new Promise(r => setTimeout(r, 100));
+            allTapBoxes[boxNumber].innerHTML = theNumber;
+            allTapBoxes[boxNumber].style.animation = 'popBounce 0.2s ease-out forwards';
+        }
+        
     }
 }
