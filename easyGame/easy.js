@@ -55,9 +55,35 @@ const minimizeVars = ['box1DecreaseSize', 'box2DecreaseSize', 'box3DecreaseSize'
 const maximizeVars = ['box1IncreaseSize', 'box2IncreaseSize', 'box3IncreaseSize', 'box4IncreaseSize', 'box5IncreaseSize', 'box6IncreaseSize', 'box7IncreaseSize', 'box8IncreaseSize', 'box9IncreaseSize'];
 let isMaximizedBool = false;
 
+// number of the box thats maximized
 let miniBoxOnNumber;
 
-const allTapBoxes = Array.prototype.slice.call(document.getElementsByClassName('tap-box'));
+// all maximizable boxes
+const allTapBoxes = getReadingOrientationNumbers();
+
+function getReadingOrientationNumbers() {
+    let temp = Array.prototype.slice.call(document.getElementsByClassName('tap-box'));
+    let ret = [];
+
+    let one = 0;
+    let two = 9;
+    let three = 18;
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            Array.prototype.push.apply(ret, temp.slice(one, one + 3));
+            Array.prototype.push.apply(ret, temp.slice(two, two + 3));
+            Array.prototype.push.apply(ret, temp.slice(three, three + 3));
+            one = one + 3;
+            two = two + 3;
+            three = three + 3;
+        }
+        one = one + 18;
+        two = two + 18;
+        three = three + 18;
+    }
+    console.log(ret);
+    return ret;
+}
 
 // Maximizes first box, and hides rest. 
 function miniBoxMaximize(num) {
@@ -67,6 +93,7 @@ function miniBoxMaximize(num) {
     hideRest(allBoxes[num]);
 }
 
+// if there is a box enlarged, it will minimize it
 function minimizeMiniBox() {
     if (isMaximizedBool) {
         allBoxes[miniBoxOnNumber].style.animation = `${minimizeVars[miniBoxOnNumber]} 0.3s ease-out forwards`;
@@ -100,6 +127,7 @@ async function unHideRest(miniBox) {
     }
 }
 
+// this is for the individual 81 numbers!!
 async function clickedTapBox(boxNumber) {
     if (isMaximizedBool) {  // This ensures that the tap-box number isnt increased by 1 unless the box is maximized
         console.log(boxNumber);
@@ -121,3 +149,21 @@ async function clickedTapBox(boxNumber) {
         
     }
 }
+/*
+if (!localStorage.getItem("numval1")) {
+    let num = document.createElement('h1');
+    num.id = 'temp-val';
+    num.innerHTML = 0;
+    document.body.appendChild(num); 
+    localStorage.setItem("numval1", "0");
+ } else {
+    let num = document.createElement('h1');
+    num.id = 'temp-val';
+    num.innerHTML = localStorage.getItem('numval1');
+    document.body.appendChild(num); 
+ }
+function incVal() {
+    let abc = document.getElementById('temp-val');
+    abc.innerHTML = parseInt(abc.innerHTML) + 1;
+    localStorage.setItem("numval1", abc.innerHTML);
+}*/
