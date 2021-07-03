@@ -61,6 +61,7 @@ let miniBoxOnNumber;
 // all maximizable boxes
 const allTapBoxes = getReadingOrientationNumbers();
 
+// gets all 81 boxes in box order and returns them in reading left to right order
 function getReadingOrientationNumbers() {
     let temp = Array.prototype.slice.call(document.getElementsByClassName('tap-box'));
     let ret = [];
@@ -129,7 +130,8 @@ async function unHideRest(miniBox) {
 
 // this is for the individual 81 numbers!!
 async function clickedTapBox(boxNumber) {
-    if (isMaximizedBool) {  // This ensures that the tap-box number isnt increased by 1 unless the box is maximized
+    let question = easyGames[0]['question'];
+    if (isMaximizedBool && question[boxNumber] === '0') {  // This ensures that the tap-box number isnt increased by 1 unless the box is maximized
         console.log(boxNumber);
         let theNumber = allTapBoxes[boxNumber].innerHTML;
         if (theNumber === '') {
@@ -149,6 +151,19 @@ async function clickedTapBox(boxNumber) {
         
     }
 }
+
+// this will start the game either from where left off or new game
+function fillStartingState() {
+    let question = easyGames[0]['question'];
+    for (let i = 0; i < allTapBoxes.length; i++) {
+        if (question[i] !== '0') {
+            allTapBoxes[i].innerHTML = question[i];
+        }
+        
+        
+    }
+}
+fillStartingState();
 /*
 if (!localStorage.getItem("numval1")) {
     let num = document.createElement('h1');
