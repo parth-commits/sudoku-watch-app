@@ -554,3 +554,55 @@ skip-button"*/
     top: 50%;
     transform: translateY(-50%);
 }*/
+#tray-button-div {
+    width: fit-content;
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-radius: 35px;
+    left: 145px;
+    animation: arrowPulseAnim 3s infinite ease-in-out;
+}
+#tray-button {
+    width: 70px;
+}
+@keyframes arrowPulseAnim { 
+    from { 
+        transform: translateY(0px) ;
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+    100% {
+        transform: translateY(0px) ;
+    }
+}
+@keyframes arrowToMenuDirection { 
+    from { 
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+@keyframes arrowToGameDirection { 
+    from { 
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+@keyframes arrowPulseAnim1 { 
+    from { 
+        transform: translateY(0px) rotate(180deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(180deg);
+    }
+}

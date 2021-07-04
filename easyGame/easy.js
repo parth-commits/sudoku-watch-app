@@ -219,3 +219,10 @@ async function quickSolve() {
         }
     }
 }
+
+async function menuButtonClicked() {
+    document.getElementById('tray-button-div').style.animation = 'arrowToMenuDirection 0.5s forwards ease-in-out';
+    await new Promise(r => setTimeout(r, 500));
+    
+    document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';
+}
