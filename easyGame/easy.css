@@ -508,3 +508,49 @@ html{
         transform: scale(1);
     }
 }
+/*clear-button
+hint-button"
+skip-button"*/
+/*#clear-button {
+    position: absolute;
+    width: 50px;
+    bottom: 15px;
+    margin: auto;
+}
+*/
+.landing-buttons {
+    width: 35px;
+    height: 35px;
+    opacity: 0.9;
+}
+.landing-buttons-list {
+    display: inline;
+    width: fit-content;
+    margin: auto;
+}
+.landing-buttons-list li {
+    display: inline;
+    width: fit-content;
+    height: fit-content;
+    padding: 0px;
+}
+#landing-buttons-div {
+    width: fit-content;
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-radius: 35px;
+    left: 50%;
+    transform: translateX(-48%);
+}
+/*
+#skip-button {
+    width: 30px;
+    height: 70px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}*/

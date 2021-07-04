@@ -100,6 +100,7 @@ function miniBoxMaximize(num) {
     miniBoxOnNumber = num;
     isMaximizedBool = true;
     hideRest(allBoxes[num]);
+    console.log('maximize');
 }
 
 // if there is a box enlarged, it will minimize it
@@ -108,6 +109,7 @@ function minimizeMiniBox() {
         allBoxes[miniBoxOnNumber].style.animation = `${minimizeVars[miniBoxOnNumber]} 0.3s ease-out forwards`;
         unHideRest(allBoxes[miniBoxOnNumber]);
         isMaximizedBool = false;
+        console.log('minimize');
     }
 }
 
@@ -161,12 +163,21 @@ async function clickedTapBox(boxNumber) {
             // save game state
             GAME_STATE = GAME_STATE.replaceAt(boxNumber, theNumber.toString());
             console.log(GAME_STATE);
-           // GAME_STATE[boxNumber] = theNumber.toString();
             localStorage.setItem('easyGameState', GAME_STATE);
         }
     }
+    if (isSolved()) {
+        console.log('game solved!!!');
+    }
 }
 
+function isSolved() {
+    if (GAME_STATE === easyGames[GAME_NUMBER]['answer']) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // personal replace function
 String.prototype.replaceAt = function(index, replacement) {
@@ -194,29 +205,17 @@ if (!localStorage.getItem("easyGameNumber")) {
     GAME_STATE = localStorage.getItem('easyGameState');
 }
 fillStartingState();
-/*
-function incVal() {
-    let gameNumber = localStorage.getItem('easyGameNumber');
-    let question = easyGames[gameNumber]['question'];
-    let state = localStorage.getItem('easyGameState');
-    localStorage.setItem("easyGameNumber", "0");
-    localStorage.setItem('easyGameState', easyGames[0]['question']);
-}*/
-/*
-if (!localStorage.getItem("numval1")) {
-    let num = document.createElement('h1');
-    num.id = 'temp-val';
-    num.innerHTML = 0;
-    document.body.appendChild(num); 
-    localStorage.setItem("numval1", "0");
- } else {
-    let num = document.createElement('h1');
-    num.id = 'temp-val';
-    num.innerHTML = localStorage.getItem('numval1');
-    document.body.appendChild(num); 
- }
-function incVal() {
-    let abc = document.getElementById('temp-val');
-    abc.innerHTML = parseInt(abc.innerHTML) + 1;
-    localStorage.setItem("numval1", abc.innerHTML);
-}*/
+
+async function quickSolve() {
+    let one = 0;
+    for (let i = 0; i < GAME_STATE.length; i++) {
+        if (GAME_STATE[i] === '0' && one === 0) {
+            one = 1;
+        } else if (GAME_STATE[i] === '0') {
+            let theNumber = easyGames[GAME_NUMBER]['answer'][i];
+            allTapBoxes[i].innerHTML = theNumber;
+            GAME_STATE = GAME_STATE.replaceAt(i, theNumber.toString());
+            localStorage.setItem('easyGameState', GAME_STATE);
+        }
+    }
+}
