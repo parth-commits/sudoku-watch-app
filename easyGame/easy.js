@@ -61,6 +61,15 @@ let miniBoxOnNumber;
 // all maximizable boxes
 const allTapBoxes = getReadingOrientationNumbers();
 
+// the game number (0-299)
+let GAME_NUMBER = 0;
+
+// the game state
+let GAME_STATE = easyGames[GAME_NUMBER]['question'];
+
+// the original state of board without touching it
+let GAME_ORIGINAL_STATE = easyGames[GAME_NUMBER]['question'];
+
 // gets all 81 boxes in box order and returns them in reading left to right order
 function getReadingOrientationNumbers() {
     let temp = Array.prototype.slice.call(document.getElementsByClassName('tap-box'));
@@ -82,7 +91,6 @@ function getReadingOrientationNumbers() {
         two = two + 18;
         three = three + 18;
     }
-    console.log(ret);
     return ret;
 }
 
@@ -132,10 +140,13 @@ async function unHideRest(miniBox) {
 async function clickedTapBox(boxNumber) {
     let question = easyGames[0]['question'];
     if (isMaximizedBool && question[boxNumber] === '0') {  // This ensures that the tap-box number isnt increased by 1 unless the box is maximized
-        console.log(boxNumber);
         let theNumber = allTapBoxes[boxNumber].innerHTML;
         if (theNumber === '') {
             allTapBoxes[boxNumber].innerHTML = 1;
+            //GAME_STATE[boxNumber] = '1';
+            GAME_STATE = GAME_STATE.replaceAt(boxNumber, '1');
+            console.log(GAME_STATE);
+            localStorage.setItem('easyGameState', GAME_STATE);
         } else {
             theNumber = parseInt(theNumber);
             if (theNumber === 9) {
@@ -147,23 +158,50 @@ async function clickedTapBox(boxNumber) {
             await new Promise(r => setTimeout(r, 100));
             allTapBoxes[boxNumber].innerHTML = theNumber;
             allTapBoxes[boxNumber].style.animation = 'popBounce 0.2s ease-out forwards';
+            // save game state
+            GAME_STATE = GAME_STATE.replaceAt(boxNumber, theNumber.toString());
+            console.log(GAME_STATE);
+           // GAME_STATE[boxNumber] = theNumber.toString();
+            localStorage.setItem('easyGameState', GAME_STATE);
         }
-        
     }
+}
+
+
+// personal replace function
+String.prototype.replaceAt = function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
 
 // this will start the game either from where left off or new game
 function fillStartingState() {
-    let question = easyGames[0]['question'];
     for (let i = 0; i < allTapBoxes.length; i++) {
-        if (question[i] !== '0') {
-            allTapBoxes[i].innerHTML = question[i];
+        if (GAME_ORIGINAL_STATE[i] !== '0') {
+            allTapBoxes[i].innerHTML = GAME_ORIGINAL_STATE[i];
+            allTapBoxes[i].style.color = '#545454';
+        } else if (GAME_STATE[i] !== '0') {
+            allTapBoxes[i].innerHTML = GAME_STATE[i];
         }
-        
-        
     }
 }
+// this needs to happen before the function call below
+if (!localStorage.getItem("easyGameNumber")) {
+    localStorage.setItem("easyGameNumber", "0");
+    localStorage.setItem('easyGameState', easyGames[0]['question']);
+} else {
+    GAME_NUMBER = localStorage.getItem('easyGameNumber');
+    GAME_ORIGINAL_STATE = easyGames[GAME_NUMBER]['question'];
+    GAME_STATE = localStorage.getItem('easyGameState');
+}
 fillStartingState();
+/*
+function incVal() {
+    let gameNumber = localStorage.getItem('easyGameNumber');
+    let question = easyGames[gameNumber]['question'];
+    let state = localStorage.getItem('easyGameState');
+    localStorage.setItem("easyGameNumber", "0");
+    localStorage.setItem('easyGameState', easyGames[0]['question']);
+}*/
 /*
 if (!localStorage.getItem("numval1")) {
     let num = document.createElement('h1');
