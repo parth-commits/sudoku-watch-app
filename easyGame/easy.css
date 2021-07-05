@@ -606,3 +606,33 @@ skip-button"*/
         transform: translateY(0px) rotate(180deg);
     }
 }
+#menu-tray {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background-color: blue;
+    left: 55px;
+    top: 205px;
+    opacity: 0;
+}
+
+@keyframes menuOpen { 
+    from { 
+        top: 205px;
+        opacity: 0;
+    }
+    100% {
+        top: 55px;
+        opacity: 1;
+    }
+}
+@keyframes menuClose { 
+    from { 
+        top: 55px;
+        opacity: 1;
+    }
+    100% {
+        top: 205px;
+        opacity: 0;
+    }
+}

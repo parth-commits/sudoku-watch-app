@@ -70,6 +70,9 @@ let GAME_STATE = easyGames[GAME_NUMBER]['question'];
 // the original state of board without touching it
 let GAME_ORIGINAL_STATE = easyGames[GAME_NUMBER]['question'];
 
+// the menu button orientation boolean
+let isMenuOpen = false;
+
 // gets all 81 boxes in box order and returns them in reading left to right order
 function getReadingOrientationNumbers() {
     let temp = Array.prototype.slice.call(document.getElementsByClassName('tap-box'));
@@ -221,8 +224,19 @@ async function quickSolve() {
 }
 
 async function menuButtonClicked() {
-    document.getElementById('tray-button-div').style.animation = 'arrowToMenuDirection 0.5s forwards ease-in-out';
-    await new Promise(r => setTimeout(r, 500));
-    
-    document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';
+    if (!isMenuOpen) {
+        document.getElementById('tray-button-div').style.animation = 'arrowToMenuDirection 0.25s forwards ease-in-out';
+        document.getElementById('menu-tray').style.animation = 'menuOpen 0.4s forwards ease-in-out';
+        document.getElementById('game-box').style.animation = 'opacityFadeOut 0.4s forwards ease-in-out';
+        await new Promise(r => setTimeout(r, 250));
+        document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';  
+        isMenuOpen = !isMenuOpen;
+    } else {
+        document.getElementById('tray-button-div').style.animation = 'arrowToGameDirection 0.25s forwards ease-in-out';
+        document.getElementById('menu-tray').style.animation = 'menuClose 0.4s forwards ease-in-out';
+        document.getElementById('game-box').style.animation = 'opacityFadeIn 0.4s forwards ease-in-out';
+        await new Promise(r => setTimeout(r, 250));
+        document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim 3s infinite ease-in-out'; 
+        isMenuOpen = !isMenuOpen;
+    }
 }
