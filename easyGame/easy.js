@@ -98,12 +98,18 @@ function getReadingOrientationNumbers() {
 }
 
 // Maximizes first box, and hides rest. 
-function miniBoxMaximize(num) {
+async function miniBoxMaximize(num) {
+    document.getElementById('tray-button-div').style.animation = 'opacityFadeOut 0.25s ease-out forwards';
+    // turn off onclick for menu button
+    document.getElementById('tray-button-div').onclick = deadCall;
     allBoxes[num].style.animation = `${maximizeVars[num]} 0.3s ease-out forwards`;
     miniBoxOnNumber = num;
     isMaximizedBool = true;
     hideRest(allBoxes[num]);
-    console.log('maximize');
+}
+
+// A dead call, does nothing. is a temporary place holder
+function deadCall() {
 }
 
 // if there is a box enlarged, it will minimize it
@@ -112,7 +118,9 @@ function minimizeMiniBox() {
         allBoxes[miniBoxOnNumber].style.animation = `${minimizeVars[miniBoxOnNumber]} 0.3s ease-out forwards`;
         unHideRest(allBoxes[miniBoxOnNumber]);
         isMaximizedBool = false;
-        console.log('minimize');
+        // turn on onclick for menu button
+        document.getElementById('tray-button-div').onclick = menuButtonClicked;
+        document.getElementById('tray-button-div').style.animation = 'opacityFadeIn 0.25s ease-out forwards';
     }
 }
 
@@ -149,7 +157,6 @@ async function clickedTapBox(boxNumber) {
             allTapBoxes[boxNumber].innerHTML = 1;
             //GAME_STATE[boxNumber] = '1';
             GAME_STATE = GAME_STATE.replaceAt(boxNumber, '1');
-            console.log(GAME_STATE);
             localStorage.setItem('easyGameState', GAME_STATE);
         } else {
             theNumber = parseInt(theNumber);
@@ -164,7 +171,6 @@ async function clickedTapBox(boxNumber) {
             allTapBoxes[boxNumber].style.animation = 'popBounce 0.2s ease-out forwards';
             // save game state
             GAME_STATE = GAME_STATE.replaceAt(boxNumber, theNumber.toString());
-            console.log(GAME_STATE);
             localStorage.setItem('easyGameState', GAME_STATE);
         }
     }
@@ -204,6 +210,7 @@ function fillStartingState() {
         }
     }
 }
+
 // this needs to happen before the function call below
 if (!localStorage.getItem("easyGameNumber")) {
     localStorage.setItem("easyGameNumber", "0");
@@ -214,22 +221,6 @@ if (!localStorage.getItem("easyGameNumber")) {
     GAME_STATE = localStorage.getItem('easyGameState');
 }
 setTimeout(fillStartingState, 2700);
-//fillStartingState();
-
-// THIS FUNCTION IS FOR TESTING PURPOSES ONLY AND SHALL BE REMOVED IN PROD
-async function quickSolve() {
-    let one = 0;
-    for (let i = 0; i < GAME_STATE.length; i++) {
-        if (GAME_STATE[i] === '0' && one === 0) {
-            one = 1;
-        } else if (GAME_ORIGINAL_STATE[i] === '0') {
-            let theNumber = easyGames[GAME_NUMBER]['answer'][i];
-            allTapBoxes[i].innerHTML = theNumber;
-            GAME_STATE = GAME_STATE.replaceAt(i, theNumber.toString());
-            localStorage.setItem('easyGameState', GAME_STATE);
-        }
-    }
-}
 
 async function menuButtonClicked() {
     if (!isMenuOpen) {
@@ -250,6 +241,7 @@ async function menuButtonClicked() {
         isMenuOpen = !isMenuOpen;
     }
 }
+
 // SKIP CURRENT GAME
 async function skipClicked(num) {
     if (num === 0) {
@@ -319,6 +311,53 @@ async function clearInputClicked() {
     localStorage.setItem('easyGameState', GAME_STATE); // update the locally stored variable
     document.getElementById('game-box').style.animation = 'opacityFadeIn 0.3s forwards ease-in-out';
 }
-function hintClicked() {
-    console.log('hint clicked');
+
+async function hintClicked() {
+    let emptyPos = [];
+    for (let i = 0; i < GAME_STATE.length; i++) {
+        if (GAME_STATE[i] === '0') {
+            emptyPos.push(i);
+        }
+    }
+    if (emptyPos.length > 0) {
+        menuButtonClicked();
+        await new Promise(r => setTimeout(r, 400));
+        let randomHintIndex = randomInteger(0, emptyPos.length);
+        
+        let boxNumber = emptyPos[randomHintIndex];
+
+        let theNumber = easyGames[GAME_NUMBER]['answer'][boxNumber];
+        allTapBoxes[boxNumber].innerHTML = theNumber;
+        allTapBoxes[boxNumber].style.animation = 'popBounce 0.2s ease-out forwards';
+        GAME_STATE = GAME_STATE.replaceAt(boxNumber, theNumber.toString());
+        localStorage.setItem('easyGameState', GAME_STATE);
+
+        if (isSolved()) {
+            await new Promise(r => setTimeout(r, 200));
+            minimizeMiniBox();
+            await new Promise(r => setTimeout(r, 1000));
+            skipClicked(1);
+        }
+    }
+}
+
+function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  
+
+// THIS FUNCTION IS FOR TESTING PURPOSES ONLY AND SHALL BE REMOVED IN PROD
+async function quickSolve() {
+    let one = 0;
+    for (let i = 0; i < GAME_STATE.length; i++) {
+        if (GAME_STATE[i] === '0' && one === 0) {
+            one = 1;
+        } else if (GAME_ORIGINAL_STATE[i] === '0') {
+            let theNumber = easyGames[GAME_NUMBER]['answer'][i];
+            allTapBoxes[i].innerHTML = theNumber;
+            GAME_STATE = GAME_STATE.replaceAt(i, theNumber.toString());
+            localStorage.setItem('easyGameState', GAME_STATE);
+        }
+    }
 }
