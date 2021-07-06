@@ -143,8 +143,7 @@ async function unHideRest(miniBox) {
 
 // this is for the individual 81 numbers!!
 async function clickedTapBox(boxNumber) {
-    let question = easyGames[0]['question'];
-    if (isMaximizedBool && question[boxNumber] === '0') {  // This ensures that the tap-box number isnt increased by 1 unless the box is maximized
+    if (isMaximizedBool && GAME_ORIGINAL_STATE[boxNumber] === '0') {  // This ensures that the tap-box number isnt increased by 1 unless the box is maximized
         let theNumber = allTapBoxes[boxNumber].innerHTML;
         if (theNumber === '') {
             allTapBoxes[boxNumber].innerHTML = 1;
@@ -170,7 +169,10 @@ async function clickedTapBox(boxNumber) {
         }
     }
     if (isSolved()) {
-        console.log('game solved!!!');
+        await new Promise(r => setTimeout(r, 200));
+        minimizeMiniBox();
+        await new Promise(r => setTimeout(r, 1000));
+        skipClicked(1);
     }
 }
 
@@ -193,8 +195,12 @@ function fillStartingState() {
         if (GAME_ORIGINAL_STATE[i] !== '0') {
             allTapBoxes[i].innerHTML = GAME_ORIGINAL_STATE[i];
             allTapBoxes[i].style.color = '#545454';
+            allTapBoxes[i].style.animation = 'popBounce 0.2s ease-out forwards';
         } else if (GAME_STATE[i] !== '0') {
             allTapBoxes[i].innerHTML = GAME_STATE[i];
+            allTapBoxes[i].style.animation = 'popBounce 0.2s ease-out forwards';
+        } else  {
+            allTapBoxes[i].innerHTML = '';
         }
     }
 }
@@ -207,14 +213,16 @@ if (!localStorage.getItem("easyGameNumber")) {
     GAME_ORIGINAL_STATE = easyGames[GAME_NUMBER]['question'];
     GAME_STATE = localStorage.getItem('easyGameState');
 }
-fillStartingState();
+setTimeout(fillStartingState, 2700);
+//fillStartingState();
 
+// THIS FUNCTION IS FOR TESTING PURPOSES ONLY AND SHALL BE REMOVED IN PROD
 async function quickSolve() {
     let one = 0;
     for (let i = 0; i < GAME_STATE.length; i++) {
         if (GAME_STATE[i] === '0' && one === 0) {
             one = 1;
-        } else if (GAME_STATE[i] === '0') {
+        } else if (GAME_ORIGINAL_STATE[i] === '0') {
             let theNumber = easyGames[GAME_NUMBER]['answer'][i];
             allTapBoxes[i].innerHTML = theNumber;
             GAME_STATE = GAME_STATE.replaceAt(i, theNumber.toString());
@@ -242,11 +250,74 @@ async function menuButtonClicked() {
         isMenuOpen = !isMenuOpen;
     }
 }
-function skipClicked() {
-    console.log('skipppp');
+// SKIP CURRENT GAME
+async function skipClicked(num) {
+    if (num === 0) {
+        menuButtonClicked();        
+    }
+    await new Promise(r => setTimeout(r, 400));
+    GAME_NUMBER = parseInt(GAME_NUMBER);
+    if (GAME_NUMBER === 299) {
+        GAME_NUMBER = 0;
+    } else {
+        GAME_NUMBER = GAME_NUMBER + 1;
+    }
+    GAME_NUMBER = GAME_NUMBER.toString();
+    GAME_ORIGINAL_STATE = easyGames[GAME_NUMBER]['question'];
+    GAME_STATE = easyGames[GAME_NUMBER]['question'];
+    localStorage.setItem("easyGameNumber", GAME_NUMBER);
+    localStorage.setItem('easyGameState', GAME_STATE);
+    document.getElementById('game-box').style.animation = 'opacityFadeOut 0.3s forwards ease-in-out';
+
+    // clean up the board
+    for (let i = 0; i < GAME_ORIGINAL_STATE.length; i++) {
+        allTapBoxes[i].style.color = '#f2ebd3';
+        allTapBoxes[i].innerHTML = '';
+    }
+
+    const miniLinesVertical = Array.prototype.slice.call(document.getElementsByClassName('mini-board-vertical-line'));
+    const miniLinesHorizontal = Array.prototype.slice.call(document.getElementsByClassName('mini-board-horizontal-line'));
+    const linesVertical = Array.prototype.slice.call(document.getElementsByClassName('board-vertical-line'));
+    const linesHorizontal = Array.prototype.slice.call(document.getElementsByClassName('board-horizontal-line'));
+    for (let i = 0; i < miniLinesVertical.length; i++) {
+        miniLinesVertical[i].style.animation = 'none';
+        miniLinesHorizontal[i].style.animation = 'none';
+    }
+    for (let i = 0; i < linesVertical.length; i++) {
+        linesVertical[i].style.animation = 'none';
+        linesHorizontal[i].style.animation = 'none';
+    }
+    await new Promise(r => setTimeout(r, 200));
+    for (let i = 0; i < miniLinesVertical.length; i++) {
+        miniLinesVertical[i].style.animation = '';
+        miniLinesHorizontal[i].style.animation = '';
+    }
+    for (let i = 0; i < linesVertical.length; i++) {
+        linesVertical[i].style.animation = '';
+        linesHorizontal[i].style.animation = '';
+    }
+    document.getElementById('game-box').style.animation = 'opacityFadeIn 0.2s forwards ease-in-out';
+    await new Promise(r => setTimeout(r, 2700));
+    fillStartingState();
 }
-function clearInputClicked() {
-    console.log('clearInputttt');
+
+
+// Clears the user input from the board
+async function clearInputClicked() {
+    menuButtonClicked();
+    await new Promise(r => setTimeout(r, 400));
+    document.getElementById('game-box').style.animation = 'opacityFadeOut 0.3s forwards ease-in-out';
+    await new Promise(r => setTimeout(r, 300));
+    for (let i = 0; i < GAME_ORIGINAL_STATE.length; i++) {
+        if (GAME_ORIGINAL_STATE[i] === '0') {
+            allTapBoxes[i].innerHTML = '';
+        } else {
+            allTapBoxes[i].innerHTML = GAME_ORIGINAL_STATE[i];
+        }
+        GAME_STATE = GAME_STATE.replaceAt(i, GAME_ORIGINAL_STATE[i]); // update the game state
+    }
+    localStorage.setItem('easyGameState', GAME_STATE); // update the locally stored variable
+    document.getElementById('game-box').style.animation = 'opacityFadeIn 0.3s forwards ease-in-out';
 }
 function hintClicked() {
     console.log('hint clicked');
