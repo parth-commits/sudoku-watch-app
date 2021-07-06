@@ -228,6 +228,7 @@ async function menuButtonClicked() {
         document.getElementById('tray-button-div').style.animation = 'arrowToMenuDirection 0.25s forwards ease-in-out';
         document.getElementById('menu-tray').style.animation = 'menuOpen 0.4s forwards ease-in-out';
         document.getElementById('game-box').style.animation = 'opacityFadeOut 0.4s forwards ease-in-out';
+        document.getElementById('game-box').style.visibility = 'hidden';
         await new Promise(r => setTimeout(r, 250));
         document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';  
         isMenuOpen = !isMenuOpen;
@@ -235,8 +236,18 @@ async function menuButtonClicked() {
         document.getElementById('tray-button-div').style.animation = 'arrowToGameDirection 0.25s forwards ease-in-out';
         document.getElementById('menu-tray').style.animation = 'menuClose 0.4s forwards ease-in-out';
         document.getElementById('game-box').style.animation = 'opacityFadeIn 0.4s forwards ease-in-out';
+        document.getElementById('game-box').style.visibility = 'visible';
         await new Promise(r => setTimeout(r, 250));
         document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim 3s infinite ease-in-out'; 
         isMenuOpen = !isMenuOpen;
     }
+}
+function skipClicked() {
+    console.log('skipppp');
+}
+function clearInputClicked() {
+    console.log('clearInputttt');
+}
+function hintClicked() {
+    console.log('hint clicked');
 }
