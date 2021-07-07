@@ -1,0 +1,636 @@
+@font-face {
+    font-family: "ManropeBold";
+    src: url("../assets/fonts/Manrope-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
+@font-face {
+    font-family: "ManropeRegular";
+    src: url("../assets/fonts/Manrope-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "ManropeLight";
+    src: url("../assets/fonts/Manrope-Light.ttf") format("truetype");
+}
+html{
+    scroll-behavior: smooth;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#landing-page {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: #14bdac;
+    overflow: hidden;
+}
+#game-box {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    margin: auto;
+    top: 55px;
+    z-index: 2;
+    background-color: transparent;
+}
+#game-border {
+    background-color: transparent;
+    width: 253px;
+    height: 253px;
+    position: absolute;
+    border-width: 2px;
+    margin: auto;
+    top: 54px;
+    left: 54px;
+    border-style: solid;
+    border-color: #0da192;
+}
+.line {
+    top: 0px;
+    position: absolute;
+    background-color: #0da192;
+}
+.board-vertical-line {
+    width: 4px;
+    height: 250px;
+    animation: verticalAnim 1s ease-out;
+}
+.board-horizontal-line {
+    width: 250px;
+    height: 4px;
+    margin: auto;
+    animation: horizontalAnim 1s ease-out;
+}
+@keyframes horizontalAnim { 
+    from { 
+        margin-left: 125px;
+        margin-right: 125px;
+        width: 0px;
+    }
+    100% {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 250px;
+    }
+}
+@keyframes verticalAnim { 
+    from { 
+        margin-top: 125px;
+        margin-bottom: 125px;
+        height: 0px;
+    }
+    100% {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 250px;
+    }
+}
+#vertical-1 {
+    left: 80.666666px;
+}
+#vertical-2 {
+    left: 165.33333px;
+}
+#horizontal-1 {
+    top: 80.666666px;
+}
+#horizontal-2 {
+    top: 165.33333px;
+}
+.mini-box {
+    position: absolute;
+    width: 80.6666px;
+    height: 80.66666px;
+    background-color: transparent;
+}
+.mini-line {
+    top: 0px;
+    position: absolute;
+    background-color: #0da192;
+}
+.mini-board-vertical-line {
+    width: 1px;
+    height: 0px;
+    animation: mini-verticalAnim 1s 1.2s ease-out forwards;
+}
+.mini-board-horizontal-line {
+    width: 0px;
+    height: 1px;
+    margin: auto;
+    animation: mini-horizontalAnim 1s 1.2s ease-out forwards;
+}
+@keyframes mini-horizontalAnim { 
+    from { 
+        margin-left: 40.3333px;
+        margin-right: 40.3333px;
+        width: 0px;
+    }
+    100% {
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 80.6666px;
+    }
+}
+@keyframes mini-verticalAnim { 
+    from { 
+        margin-top: 40.3333px;
+        margin-bottom: 40.3333px;
+        height: 0px;
+    }
+    100% {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        height: 80.6666px;
+    }
+}
+#mini-vertical-1 {
+    left: 25.55555px;
+}
+#mini-vertical-2 {
+    left: 53.11111px;
+}
+#mini-horizontal-1 {
+    top: 25.555555px;
+}
+#mini-horizontal-2 {
+    top: 53.11111px;
+}
+
+#mini-box-1 {
+    top: 0px;
+    left: 0px;
+}
+#mini-box-2 {
+    top: 0px;
+    left: 84.66666px;
+}
+#mini-box-3 {
+    top: 0px;
+    left: 169.33333px;
+}
+#mini-box-4 {
+    top: 84.66666px;
+    left: 0px;
+}
+#mini-box-5 {
+    top: 84.66666px;
+    left: 84.66666px;
+}
+#mini-box-6 {
+    top: 84.66666px;
+    left: 169.33333px;
+}
+#mini-box-7 {
+    top: 169.33333px;
+    left: 0px;
+}
+#mini-box-8 {
+    top: 169.33333px;
+    left: 84.66666px;
+}
+#mini-box-9 {
+    top: 169.33333px;
+    left: 169.33333px;
+}
+/* Fades an element out */
+@keyframes opacityFadeOut { 
+    from { 
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* Fades an element in */
+@keyframes opacityFadeIn { 
+    from { 
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+/* increases box 1 size to fill page */
+@keyframes box1IncreaseSize { 
+    from { 
+        transform: scale(1);
+        left: 0px;
+        top: 0px;
+        z-index: initial;
+    }
+    100% {
+        transform: scale(3.09917);
+        left: 84.66667px;
+        top: 84.66667px;
+        z-index: 5;
+    }
+}
+
+/* decreases box 1 size to normal size */
+@keyframes box1DecreaseSize { 
+    from { 
+        transform: scale(3.09917);
+        left: 84.66667px;
+        top: 84.66667px;
+        z-index: 5;
+    }
+    100% {
+        transform: scale(1);
+        left: 0px;
+        top: 0px;
+        z-index: initial;
+    }
+}
+
+/* increases box 2 size to fill page */
+@keyframes box2IncreaseSize { 
+    from { 
+        transform: scale(1);
+        top: 0px;
+        z-index: initial;
+    }
+    100% {
+        transform: scale(3.09917);
+        top: 84.66667px;
+        z-index: 5;
+    }
+}
+
+/* decreases box 2 size to normal size */
+@keyframes box2DecreaseSize { 
+    from { 
+        transform: scale(3.09917);
+        top: 84.66667px;
+        z-index: 5;
+    }
+    100% {
+        transform: scale(1);
+        top: 0px;
+        z-index: initial;
+    }
+}
+
+/* increases box 3 size to fill page */
+@keyframes box3IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(-84.666667px) translateY(84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 3 size to normal size */
+@keyframes box3DecreaseSize { 
+    from { 
+        transform: translateX(-84.666667px) translateY(84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+/* increases box 4 size to fill page */
+@keyframes box4IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 4 size to normal size */
+@keyframes box4DecreaseSize { 
+    from { 
+        transform: translateX(84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+/* increases box 5 size to fill page */
+@keyframes box5IncreaseSize { 
+    from { 
+        transform: scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 5 size to normal size */
+@keyframes box5DecreaseSize { 
+    from { 
+        transform: scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: scale(1);
+        z-index: initial;
+    }
+}
+
+/* increases box 6 size to fill page */
+@keyframes box6IncreaseSize { 
+    from { 
+        transform: translateX(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(-84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 6 size to normal size */
+@keyframes box6DecreaseSize { 
+    from { 
+        transform: translateX(-84.666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+
+/* increases box 7 size to fill page */
+@keyframes box7IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 7 size to normal size */
+@keyframes box7DecreaseSize { 
+    from { 
+        transform: translateX(84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+
+/* increases box 8 size to fill page */
+@keyframes box8IncreaseSize { 
+    from { 
+        transform: translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 8 size to normal size */
+@keyframes box8DecreaseSize { 
+    from { 
+        transform: translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+
+
+/* increases box 9 size to fill page */
+@keyframes box9IncreaseSize { 
+    from { 
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+    100% {
+        transform: translateX(-84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+}
+
+/* decreases box 9 size to normal size */
+@keyframes box9DecreaseSize { 
+    from { 
+        transform: translateX(-84.666667px) translateY(-84.6666667px) scale(3.09917);
+        z-index: 5;
+    }
+    100% {
+        transform: translateX(0px) translateY(0px) scale(1);
+        z-index: initial;
+    }
+}
+.tap-box {
+    width: 20.222px;
+    height: 20.222px;
+    font-family: "ManropeBold";
+    background-color: transparent;
+    color: #f2ebd3;
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    line-height: 20px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+.tap-box-1 {
+    top: 3px;
+    left: 3px;
+}
+.tap-box-2 {
+    top: 3px;
+    left: 30.2222px;
+}
+.tap-box-3 {
+    top: 3px;
+    left: 57.44px;
+}
+.tap-box-4 {
+    top: 30.2222px;
+    left: 3px;
+}
+.tap-box-5 {
+    top: 30.2222px;
+    left: 30.2222px;
+}
+.tap-box-6 {
+    top: 30.2222px;
+    left: 57.44px;
+}
+.tap-box-7 {
+    top: 57.44px;
+    left: 3px;
+}
+.tap-box-8 {
+    top: 57.44px;
+    left: 30.2222px;
+}
+.tap-box-9 {
+    top: 57.44px;
+    left: 57.44px;
+}
+/* cool little pop out bounce*/
+@keyframes popBounce { 
+    from { 
+        transform: scale(0.6);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+#tray-button-div {
+    width: fit-content;
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-radius: 35px;
+    left: 145px;
+    animation: arrowPulseAnim 3s infinite ease-in-out;
+}
+#tray-button {
+    width: 70px;
+}
+@keyframes arrowPulseAnim { 
+    from { 
+        transform: translateY(0px) ;
+    }
+    50% {
+        transform: translateY(-7px);
+    }
+    100% {
+        transform: translateY(0px) ;
+    }
+}
+@keyframes arrowToMenuDirection { 
+    from { 
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+@keyframes arrowToGameDirection { 
+    from { 
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+@keyframes arrowPulseAnim1 { 
+    from { 
+        transform: translateY(0px) rotate(180deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(180deg);
+    }
+}
+#menu-tray {
+    position: absolute;
+    width: 280px;
+    height: 250px;
+    background-color: transparent;
+    left: 55px;
+    top: 205px;
+    opacity: 0;
+}
+
+@keyframes menuOpen { 
+    from { 
+        top: 205px;
+        opacity: 0;
+    }
+    100% {
+        top: 65px;
+        opacity: 1;
+    }
+}
+@keyframes menuClose { 
+    from { 
+        top: 65px;
+        opacity: 1;
+    }
+    100% {
+        top: 205px;
+        opacity: 0;
+    }
+}
+.menu-button-img {
+    width: 75px;
+    height: 70px;
+    padding: 10px;
+    padding-left: 15px;
+    margin-right: 180px;
+}
+.menu-button-img-2 {
+    width: 70px;
+    height: 60px;
+    padding: 10px;
+    margin-top: 7px;
+    padding-left: 20px;
+    margin-right: 180px;
+
+}
+.menu-button-img-special {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+    margin-right: 180px;
+}
+.menu-button-text {
+    color: #227a72; /*f2ebd3 545454 0da192*/
+    font-family: 'ManropeBold';
+    font-size: 30px;
+    position: absolute;
+    left: 85px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+
+}
+#menu-button-text-1 {
+    top: 13px;
+}
+#menu-button-text-2 {
+    top: 92px;
+}
+#menu-button-text-3 {
+    top: 172px;
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Medium</title>
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <link rel="stylesheet" href="./medium.css">
+  </head>
+  <body>
+    <div id="landing-page" onclick="minimizeMiniBox()">
+        <!--<div id="game-border"></div>-->
+      <div id="game-box">
+        <div class="board-vertical-line line" id="vertical-1"></div>
+        <div class="board-vertical-line line" id="vertical-2"></div>
+        <div class="board-horizontal-line line" id="horizontal-1"></div>
+        <div class="board-horizontal-line line" id="horizontal-2"></div>
+        <div class="mini-box" id="mini-box-1">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(0)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(1)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(2)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(9)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(10)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(11)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(18)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(19)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(20)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-2">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(3)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(4)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(5)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(12)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(13)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(14)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(21)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(22)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(23)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-3">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(6)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(7)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(8)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(15)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(16)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(17)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(24)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(25)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(26)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-4">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(27)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(28)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(29)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(36)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(37)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(38)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(45)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(46)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(47)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-5">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(30)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(31)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(32)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(39)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(40)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(41)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(48)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(49)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(50)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-6">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(33)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(34)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(35)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(42)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(43)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(44)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(51)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(52)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(53)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-7">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(54)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(55)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(56)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(63)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(64)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(65)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(72)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(73)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(74)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-8">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(57)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(58)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(59)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(66)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(67)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(68)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(75)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(76)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(77)"></div>
+        </div>
+        <div class="mini-box" id="mini-box-9">
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-1"></div>
+            <div class="mini-board-vertical-line mini-line" id="mini-vertical-2"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-1"></div>
+            <div class="mini-board-horizontal-line mini-line" id="mini-horizontal-2"></div>
+            <div class="tap-box tap-box-1" onclick="clickedTapBox(60)"></div>
+            <div class="tap-box tap-box-2" onclick="clickedTapBox(61)"></div>
+            <div class="tap-box tap-box-3" onclick="clickedTapBox(62)"></div>
+            <div class="tap-box tap-box-4" onclick="clickedTapBox(69)"></div>
+            <div class="tap-box tap-box-5" onclick="clickedTapBox(70)"></div>
+            <div class="tap-box tap-box-6" onclick="clickedTapBox(71)"></div>
+            <div class="tap-box tap-box-7" onclick="clickedTapBox(78)"></div>
+            <div class="tap-box tap-box-8" onclick="clickedTapBox(79)"></div>
+            <div class="tap-box tap-box-9" onclick="clickedTapBox(80)"></div>
+        </div>
+      </div>
+      <div id="menu-tray">
+        <img id="menu-button-img-1" class="menu-button-img" src="../assets/img/skip.png" alt="" onclick="skipClicked(0)">
+        <img id="menu-button-img-2" class="menu-button-img-2" src="../assets/img/clearInput.png" alt="" onclick="clearInputClicked()">
+        <img id="menu-button-img-3" class="menu-button-img-special" src="../assets/img/hint.png" alt="" onclick="hintClicked()">
+        <div class="menu-button-text" id="menu-button-text-1" onclick="skipClicked(0)">Skip game</div>
+        <div class="menu-button-text" id="menu-button-text-2" onclick="clearInputClicked()">Clear input</div>
+        <div class="menu-button-text" id="menu-button-text-3" onclick="hintClicked()">Hint</div>
+      </div>
+      
+      <div id="tray-button-div" onclick="menuButtonClicked()">
+        <img id="tray-button" src="../assets/img/arrow.png" alt="">
+      </div>
+    </div>
+    <button onclick="quickSolve()">Press me to quickly solve</button>
+    <script src="./medium.js"></script>
+  </body>
+</html>

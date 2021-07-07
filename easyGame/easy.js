@@ -121,6 +121,7 @@ function minimizeMiniBox() {
         // turn on onclick for menu button
         document.getElementById('tray-button-div').onclick = menuButtonClicked;
         document.getElementById('tray-button-div').style.animation = 'opacityFadeIn 0.25s ease-out forwards';
+        document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim 3s infinite ease-in-out';
     }
 }
 
@@ -229,7 +230,7 @@ async function menuButtonClicked() {
         document.getElementById('game-box').style.animation = 'opacityFadeOut 0.4s forwards ease-in-out';
         document.getElementById('game-box').style.visibility = 'hidden';
         await new Promise(r => setTimeout(r, 250));
-        document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';  
+        document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';
         isMenuOpen = !isMenuOpen;
     } else {
         document.getElementById('tray-button-div').style.animation = 'arrowToGameDirection 0.25s forwards ease-in-out';
