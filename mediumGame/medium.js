@@ -98,17 +98,12 @@ function getReadingOrientationNumbers() {
 
 // Maximizes first box, and hides rest. 
 async function miniBoxMaximize(num) {
+    isMaximizedBool = true;
     document.getElementById('tray-button-div').style.animation = 'opacityFadeOut 0.25s ease-out forwards';
     // turn off onclick for menu button
-    document.getElementById('tray-button-div').onclick = deadCall;
     allBoxes[num].style.animation = `${maximizeVars[num]} 0.3s ease-out forwards`;
     miniBoxOnNumber = num;
-    isMaximizedBool = true;
     hideRest(allBoxes[num]);
-}
-
-// A dead call, does nothing. is a temporary place holder
-function deadCall() {
 }
 
 // if there is a box enlarged, it will minimize it
@@ -118,7 +113,7 @@ function minimizeMiniBox() {
         unHideRest(allBoxes[miniBoxOnNumber]);
         isMaximizedBool = false;
         // turn on onclick for menu button
-        document.getElementById('tray-button-div').onclick = menuButtonClicked;
+
         document.getElementById('tray-button-div').style.animation = 'opacityFadeIn 0.25s ease-out forwards';
         document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim 3s infinite ease-in-out';
     }
@@ -223,22 +218,24 @@ if (!localStorage.getItem("mediumGameNumber")) {
 setTimeout(fillStartingState, 2700);
 
 async function menuButtonClicked() {
-    if (!isMenuOpen) {
-        document.getElementById('tray-button-div').style.animation = 'arrowToMenuDirection 0.25s forwards ease-in-out';
-        document.getElementById('menu-tray').style.animation = 'menuOpen 0.4s forwards ease-in-out';
-        document.getElementById('game-box').style.animation = 'opacityFadeOut 0.4s forwards ease-in-out';
-        document.getElementById('game-box').style.visibility = 'hidden';
-        await new Promise(r => setTimeout(r, 250));
-        document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';
-        isMenuOpen = !isMenuOpen;
-    } else {
-        document.getElementById('tray-button-div').style.animation = 'arrowToGameDirection 0.25s forwards ease-in-out';
-        document.getElementById('menu-tray').style.animation = 'menuClose 0.4s forwards ease-in-out';
-        document.getElementById('game-box').style.animation = 'opacityFadeIn 0.4s forwards ease-in-out';
-        document.getElementById('game-box').style.visibility = 'visible';
-        await new Promise(r => setTimeout(r, 250));
-        document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim 3s infinite ease-in-out'; 
-        isMenuOpen = !isMenuOpen;
+    if (!isMaximizedBool) {
+        if (!isMenuOpen) {
+            document.getElementById('tray-button-div').style.animation = 'arrowToMenuDirection 0.25s forwards ease-in-out';
+            document.getElementById('menu-tray').style.animation = 'menuOpen 0.4s forwards ease-in-out';
+            document.getElementById('game-box').style.animation = 'opacityFadeOut 0.4s forwards ease-in-out';
+            document.getElementById('game-box').style.visibility = 'hidden';
+            await new Promise(r => setTimeout(r, 250));
+            document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim1 3s infinite ease-in-out';
+            isMenuOpen = !isMenuOpen;
+        } else {
+            document.getElementById('tray-button-div').style.animation = 'arrowToGameDirection 0.25s forwards ease-in-out';
+            document.getElementById('menu-tray').style.animation = 'menuClose 0.4s forwards ease-in-out';
+            document.getElementById('game-box').style.animation = 'opacityFadeIn 0.4s forwards ease-in-out';
+            document.getElementById('game-box').style.visibility = 'visible';
+            await new Promise(r => setTimeout(r, 250));
+            document.getElementById('tray-button-div').style.animation = 'arrowPulseAnim 3s infinite ease-in-out'; 
+            isMenuOpen = !isMenuOpen;
+        }
     }
 }
 

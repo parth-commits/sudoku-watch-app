@@ -514,8 +514,6 @@ html{
     position: absolute;
     bottom: 10px;
     margin: auto;
-    margin-top: 5px;
-    padding-top: 5px;
     border-radius: 35px;
     left: 145px;
     animation: arrowPulseAnim 3s infinite ease-in-out;
@@ -573,7 +571,7 @@ html{
 
 @keyframes menuOpen { 
     from { 
-        top: 205px;
+        top: 360px;
         opacity: 0;
     }
     100% {
@@ -587,7 +585,7 @@ html{
         opacity: 1;
     }
     100% {
-        top: 205px;
+        top: 360px;
         opacity: 0;
     }
 }
