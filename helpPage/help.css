@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "ManropeMedium";
+    src: url("../assets/fonts/Manrope-Medium.ttf") format("truetype");
+}
+html{
+    scroll-behavior: smooth;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+#main-help-page {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: #14bdac;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    scroll-snap-type: y mandatory;
+}
+.help-page {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: #14bdac;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start;
+    scroll-snap-points-x: repeat(360px);
+}
+.help-button {
+    width: 60px;
+    margin: auto;
+    margin-top: 10px;
+}
+.help-button-img {
+    width: 60px;
+}
+.help-text {
+    font-family: "ManropeMedium";
+    font-size: 22px;
+    color: #087a6f;
+    text-align: center;
+}
+.inline-images {
+    height: 22px;
+    width: 22px;
+}
+.tray-button-div {
+    width: fit-content;
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+    border-radius: 35px;
+    left: 145px;
+    transform: rotate(180deg);
+    animation: arrowPulseAnim 3s infinite ease-in-out;
+}
+.tray-button {
+    width: 70px;
+}
+@keyframes arrowPulseAnim { 
+    from { 
+        transform: translateY(0px) rotate(180deg);
+    }
+    50% {
+        transform: translateY(-7px) rotate(180deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(180deg);
+    }
+}
