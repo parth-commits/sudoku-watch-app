@@ -1,6 +1,6 @@
 @font-face {
     font-family: "ManropeLight";
-    src: url("../assets/fonts/Manrope-Medium.ttf") format("truetype");
+    src: url("../assets/fonts/Manrope-Bold.ttf") format("truetype");
 }
 html{
     scroll-behavior: smooth;
@@ -23,15 +23,56 @@ html{
 .level {
     font-size: 60px;
     font-family: "ManropeLight";
+    color: #f2ebd3;
     text-align: center;
     width: fit-content;
     margin: auto;
-    
+    border-radius: 10px;
+    margin-top: 15px;
+    text-transform: uppercase;
+    line-height: 70px;
+    animation: opacityFadeIn 0.5s ease-in;
 }
 #difficulty-buttons-list {
     position: relative;
-    top: 56px;
+    top: 31px;
     width: fit-content;
     margin: auto;
     list-style-type: none;
+}
+.lineAnim {
+    position: relative;
+    margin: auto;
+    width: 180px;
+    height: 3px;
+    background-color: #087a6f;
+    margin: auto;
+    animation: lineAnim 1s ease-in-out;
+}
+
+@keyframes lineAnim { 
+    from { 
+        width: 0px;
+    }
+    100% {
+        width: 180px;
+    }
+}
+@keyframes opacityFadeIn { 
+    from { 
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+#line-1 {
+    top: 20px;
+    margin-bottom: 30px;
+}
+#line-2 {
+    top: 10px;
+}
+.links {
+    text-decoration: none;
 }
